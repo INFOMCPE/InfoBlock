@@ -1,0 +1,11 @@
+name: InfoBlock
+main: infomcpe\InfoBlock
+author: Алексей
+version: 1.0
+api: [2.0.0]
+load: STARTUP
+website: infomcpe.ru
+commands:
+    infoblock:
+        description: "Информацыя о блоке"
+        aliases: [ib]
