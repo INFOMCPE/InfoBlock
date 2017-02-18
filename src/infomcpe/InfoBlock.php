@@ -6,8 +6,8 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\Utils;
-use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\utils\Config;
+use pocketmine\math\Vector3;
+use pocketmine\level\sound\ClickSound;
 use pocketmine\event\Listener;
 use pocketmine\plugin\Plugin;
 use pocketmine\Server;
@@ -38,7 +38,9 @@ class InfoBlock extends PluginBase implements Listener {
                  $z = $block->getFloorZ();
                  $id = $block->getId();
                  $name = $block->getName();
+                 $player->getlevel()->addSound(new ClickSound( new Vector3($x, $y, $z)));
                 $player->sendMessage(InfoBlock::Prfix."X: {$x} Z: {$z} Y: {$y} ID: {$id} Название: {$name}");
+                $event->setCancelled(TRUE);
             }
         }
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
